@@ -1,0 +1,28 @@
+.buttons {
+    padding-top: 20px;
+    display: flex;
+    gap: 5px;
+
+}
+
+ .buttons  button {
+    border: none;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.buttons  button:hover {
+    
+    background-color: #3C82F6 ;
+    cursor: pointer;
+}
+
+.passive {
+    color: green;
+}
+
+.active {
+    color: white;
+    background-color: #3C82F6;
+}

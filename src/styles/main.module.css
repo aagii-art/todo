@@ -7,9 +7,10 @@ body {
 }
 
 .main {
-    width: 377px;
-    padding: 20px 10px;
+    width: 345px;
+    padding: 24px 16px;
     background-color: white;
+    border-radius: 6px;
     box-shadow: 0px 0px 10px 2px #00000050;
 
 }
@@ -19,7 +20,7 @@ body {
  font-weight: 600;
  line-height: 28px;
  text-align: center;
- background-color: aqua;
+ padding-bottom: 15px;
 }
 
 .inputSection {
@@ -41,4 +42,28 @@ body {
     padding: 8px 16px;
     border-radius: 6px;
     background-color: #3C82F6;
+}
+
+.powered {
+    padding-top: 40px;
+    color: #6B7280;
+    font-size: 12px;
+    text-align: center;
+}
+
+.span {
+ font-size: 12px;
+ color: #3B73ED;
+}
+
+.tasks {
+    list-style-type: none;
+}
+
+.noTask {
+    color: #6B7280;
+    font-size: 14px;
+    padding-top: 30px;
+    text-align: center;
+    font-weight: 300;
 }
