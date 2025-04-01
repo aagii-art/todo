@@ -8,6 +8,7 @@ const font = Inter({ subsets: ["latin"], weight: "variable" });
 export const Main = () => {
   const [task, settask] = useState("");
   const [tasks, settasks] = useState([]);
+  const [filter, setfilter] = useState("all");
 
   const taskf = (v) => {
     settask(v.target.value);
@@ -15,13 +16,23 @@ export const Main = () => {
 
   const save = () => {
     if (task.trim()) {
-      settasks([...tasks, task]);
+      settasks([...tasks, {text: task, completed : false } ]);
       settask("");
-    } else {
-      settask("");
+    }else {
+      settask("")
     }
   };
   
+  const filterT = filter === "all" ? tasks 
+  : filter === "active" ? tasks.filter( (t)=> !t.completed ) : tasks.filter( (t)=> t.completed )
+  
+  const updateF = (i) => {
+    const uTasks = tasks.map( (t,ind)=>
+      i===ind ? {...t, completed: !t.completed} : t
+    );
+    settasks(uTasks);
+  } 
+   
   return (
     <div className={` ${s.main} ${font.className} `}>
 
@@ -38,14 +49,16 @@ export const Main = () => {
         <button onClick={save }>Add</button>
       </div>
 
-      <Buttons />
+      <Buttons setf={setfilter} filter={filter} />
 
       { tasks.length == 0 && <p className={s.noTask} >No tasks yet. Add one above!</p> }
 
-    
-        {tasks.map((v, index) => {
-          return <li key={index} className={s.tasks} >  <input type="checkbox" /> {v} </li>;
-        })}
+      {
+         filterT.map( (v,i)=>{
+           return <li> <input type="checkbox" checked={v.completed}  onChange={()=> updateF(i) } />
+            {v.text} </li>
+         } )
+      }    
       
       <p className={s.powered} >Powered by <span className={s.span} >Pinecony academy</span></p>
 
