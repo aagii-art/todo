@@ -12,3 +12,9 @@
     )
      
  }
+
+ export const Delete = ( {ondelete} ) => {
+    return (
+        <button className={s.delete} onClick={ondelete} > Delete </button>
+    )
+}

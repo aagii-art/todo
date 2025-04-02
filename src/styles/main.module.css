@@ -7,7 +7,7 @@ body {
 }
 
 .main {
-    width: 345px;
+    width: 377px;
     padding: 24px 16px;
     background-color: white;
     border-radius: 6px;
@@ -61,7 +61,7 @@ body {
 }
 
 .noTask {
-    color: #6B7280;
+    color: #868fa2;
     font-size: 14px;
     padding-top: 30px;
     text-align: center;
@@ -69,5 +69,22 @@ body {
 }
 
 .li {
+    margin-top: 16px;
+    padding: 16px;
+    display: flex;
    list-style-type: none;
+   border-radius: 6px;
+   background-color: #F3F4F6;
+   transition: all 0.3s linear ;
+}
+
+.li:hover {
+    background-color: #E5E7EB ;
+    transform: scale(1.01);
+}
+
+.li input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

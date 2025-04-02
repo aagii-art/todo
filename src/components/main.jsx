@@ -1,7 +1,7 @@
 import s from "@/styles/main.module.css";
 import { Inter, Bebas_Neue, Manrope } from "next/font/google";
 import { useState } from "react";
-import { Buttons } from "./buttons";
+import { Buttons, Delete } from "./buttons";
 
 const font = Inter({ subsets: ["latin"], weight: "variable" });
 
@@ -35,6 +35,10 @@ export const Main = () => {
 
   } 
 
+  const deleteF = (i) => {
+      settasks( (t) => t.filter( (t) => t.id !== i ) )
+  }
+
   return (
     <div className={` ${s.main} ${font.className} `}>
 
@@ -57,8 +61,13 @@ export const Main = () => {
 
       {
          filterT.map( (v)=>
-            <li  className={s.li} > <input type="checkbox" checked={v.completed}  onChange={()=> updateF(v.id) } />
-            {v.text} </li>
+            <li key={v.id}  className={s.li} >
+
+                <input type="checkbox" checked={v.completed}  onChange={()=> updateF(v.id) } />
+                {v.text} 
+                <Delete ondelete={()=> deleteF(v.id) } />
+
+            </li>
          )
       }    
       
