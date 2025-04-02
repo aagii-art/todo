@@ -16,7 +16,7 @@ export const Main = () => {
 
   const save = () => {
     if (task.trim()) {
-      settasks([...tasks, {text: task, completed : false } ]);
+      settasks([...tasks, {text: task, completed : false, id: Date.now() } ]);
       settask("");
     }else {
       settask("")
@@ -26,13 +26,15 @@ export const Main = () => {
   const filterT = filter === "all" ? tasks 
   : filter === "active" ? tasks.filter( (t)=> !t.completed ) : tasks.filter( (t)=> t.completed )
   
-  const updateF = (i) => {
-    const uTasks = tasks.map( (t,ind)=>
-      i===ind ? {...t, completed: !t.completed} : t
-    );
-    settasks(uTasks);
+  const updateF = (id) => {
+
+    settasks( (t)=> {
+      return t.map((tas)=> 
+       id === tas.id ? { ...tas, completed: !tas.completed } : tas )
+    })
+
   } 
-   
+
   return (
     <div className={` ${s.main} ${font.className} `}>
 
@@ -54,10 +56,10 @@ export const Main = () => {
       { tasks.length == 0 && <p className={s.noTask} >No tasks yet. Add one above!</p> }
 
       {
-         filterT.map( (v,i)=>{
-           return <li> <input type="checkbox" checked={v.completed}  onChange={()=> updateF(i) } />
+         filterT.map( (v)=>
+            <li  className={s.li} > <input type="checkbox" checked={v.completed}  onChange={()=> updateF(v.id) } />
             {v.text} </li>
-         } )
+         )
       }    
       
       <p className={s.powered} >Powered by <span className={s.span} >Pinecony academy</span></p>
