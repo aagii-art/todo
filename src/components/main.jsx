@@ -1,31 +1,22 @@
-import s from "@/styles/main.module.css";
-import { Inter, Bebas_Neue, Manrope } from "next/font/google";
 import { useState } from "react";
-import { Buttons, Delete } from "./buttons";
+import s from "@/styles/main.module.css";
+import { Inter } from "next/font/google";
+import { Buttons, Delete, DeleteAll } from "./buttons";
 
 const font = Inter({ subsets: ["latin"], weight: "variable" });
 
 export const Main = () => {
+
   const [task, settask] = useState("");
   const [tasks, settasks] = useState([]);
+  const totalT = tasks.length;
   const [filter, setfilter] = useState("all");
+  const completedT = tasks.filter((t)=> t.completed ).length;
 
   const taskf = (v) => {
     settask(v.target.value);
   };
 
-  const save = () => {
-    if (task.trim()) {
-      settasks([...tasks, {text: task, completed : false, id: Date.now() } ]);
-      settask("");
-    }else {
-      settask("")
-    }
-  };
-  
-  const filterT = filter === "all" ? tasks 
-  : filter === "active" ? tasks.filter( (t)=> !t.completed ) : tasks.filter( (t)=> t.completed )
-  
   const updateF = (id) => {
 
     settasks( (t)=> {
@@ -35,9 +26,25 @@ export const Main = () => {
 
   } 
 
-  const deleteF = (i) => {
-      settasks( (t) => t.filter( (t) => t.id !== i ) )
-  }
+  const save = () => {
+    if (!task.trim()) {
+      window.alert("Please enter a task!");
+      return;
+    }else {
+      settasks([...tasks, {text: task, completed : false, id: Date.now() } ]);
+      settask("");
+    }
+  };
+  
+  const filterT = filter === "all" ? tasks 
+  : filter === "active" ? tasks.filter( (t)=> !t.completed ) : tasks.filter( (t)=> t.completed )
+  
+
+  const deleteF = (i) => 
+    window.confirm("Are you sure you want to delete this task?")   &&  settasks( (t) => t.filter( (t) => t.id !== i ) ) 
+
+  const clear = () =>
+    window.confirm("Are you sure you want to delete all completed tasks?")  &&  settasks( tasks.filter((task)=> !task.completed ));
 
   return (
     <div className={` ${s.main} ${font.className} `}>
@@ -47,9 +54,11 @@ export const Main = () => {
       <div className={s.inputSection}>
         <input
           type="text"
-          placeholder="Add a new task..."
-          onChange={taskf}
           value={task}
+          onChange={taskf}
+          maxLength={100}
+          placeholder="Add a new task..."
+          onKeyDown={ (b) => b.key === "Enter" && save() }
         />
 
         <button onClick={save }>Add</button>
@@ -70,7 +79,9 @@ export const Main = () => {
             </li>
          )
       }    
-      
+
+      { completedT > 0 &&  <p className={s.clear} > {completedT} of {totalT} tasks completed <DeleteAll  clear={clear}  /> </p> }
+
       <p className={s.powered} >Powered by <span className={s.span} >Pinecony academy</span></p>
 
     </div>

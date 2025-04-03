@@ -6,20 +6,17 @@
 }
 
  .buttons  button {
+    height: 32px;
     border: none;
-    padding: 4px 12px;
+    padding-inline: 12px;
     border-radius: 6px;
     font-size: 12px;
 }
 
-.buttons  button:hover {
-    
-    background-color: #3C82F6 ;
-    cursor: pointer;
-}
+
 
 .passive {
-    color: green;
+    color: #363636;
 }
 
 .active {

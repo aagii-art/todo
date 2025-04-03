@@ -3,7 +3,7 @@ body {
     display: flex;
     padding-top: 60px;
     justify-content: center;
-    background-color: white;
+    background-color: #f3f5f7;
 }
 
 .main {
@@ -20,18 +20,19 @@ body {
  font-weight: 600;
  line-height: 28px;
  text-align: center;
- padding-bottom: 15px;
+ padding-bottom: 20px;
 }
 
 .inputSection {
     gap: 5px;
     width: 100%;
+    height: 40px;
     display: flex;
 }
 
 .inputSection input{
     flex: 1;
-    border: 1px gray solid;
+    border: 1px #E4E4E7 solid;
     padding: 8px 16px;
     border-radius: 6px;
 }
@@ -61,30 +62,45 @@ body {
 }
 
 .noTask {
-    color: #868fa2;
+    color: #6b7280;
     font-size: 14px;
     padding-top: 30px;
     text-align: center;
-    font-weight: 300;
 }
 
 .li {
-    margin-top: 16px;
+    gap: 10px;
+    min-width: 100%;
+    min-height: 62px;
+    font-size: 14px;
+    max-width: fit-content;
     padding: 16px;
     display: flex;
+    align-items: center;
    list-style-type: none;
    border-radius: 6px;
-   background-color: #F3F4F6;
+   background-color: #F9FAFB;
    transition: all 0.3s linear ;
+   overflow: hidden;
+   margin-block: 20px;
 }
 
 .li:hover {
-    background-color: #E5E7EB ;
+    background-color: #F3F4F6 ;
     transform: scale(1.01);
 }
 
 .li input {
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+}
+
+.clear {
+    display: flex;
+    align-items: baseline;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 10px;
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 500;
 }

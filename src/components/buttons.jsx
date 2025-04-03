@@ -18,3 +18,9 @@
         <button className={s.delete} onClick={ondelete} > Delete </button>
     )
 }
+
+export const DeleteAll = ({clear}) => {
+    return (
+            <button className={s.delete} onClick={clear} >Clear Completed</button> 
+    )
+}
