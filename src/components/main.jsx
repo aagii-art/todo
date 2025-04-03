@@ -29,9 +29,10 @@ export const Main = () => {
   const save = () => {
     if (!task.trim()) {
       window.alert("Please enter a task!");
+      settask("")
       return;
-    }else {
-      settasks([...tasks, {text: task, completed : false, id: Date.now() } ]);
+    } else {
+      settasks([ {text: task, completed : false, id: Date.now() }, ...tasks ]);
       settask("");
     }
   };
@@ -70,10 +71,10 @@ export const Main = () => {
 
       {
          filterT.map( (v)=>
-            <li key={v.id}  className={s.li} >
+            <li key={v.id}  className={ s.li } >
 
                 <input type="checkbox" checked={v.completed}  onChange={()=> updateF(v.id) } />
-                {v.text} 
+                <span className = {v.completed ? s.completedT : "" } > {v.text  } </span>
                 <Delete ondelete={()=> deleteF(v.id) } />
 
             </li>

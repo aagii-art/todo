@@ -11,12 +11,13 @@
     padding-inline: 12px;
     border-radius: 6px;
     font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.1s linear ;
 }
-
-
 
 .passive {
     color: #363636;
+    background-color: #e5e7eb;
 }
 
 .active {

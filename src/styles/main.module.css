@@ -35,14 +35,24 @@ body {
     border: 1px #E4E4E7 solid;
     padding: 8px 16px;
     border-radius: 6px;
+    outline: none;
+}
+
+.inputSection input:focus {
+    border: #2463EB 2px solid;
 }
 
 .inputSection button{
     color: white;
     border: none;
+    outline: none;
     padding: 8px 16px;
     border-radius: 6px;
     background-color: #3C82F6;
+}
+
+.inputSection button:active {
+    transform: scale(1.05);
 }
 
 .powered {
@@ -85,6 +95,10 @@ body {
    margin-block: 20px;
 }
 
+.completedT {
+    text-decoration: line-through;
+}
+
 .li:hover {
     background-color: #F3F4F6 ;
     transform: scale(1.01);
@@ -104,3 +118,4 @@ body {
     font-size: 14px;
     font-weight: 500;
 }
+
