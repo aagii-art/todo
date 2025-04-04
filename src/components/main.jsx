@@ -42,10 +42,10 @@ export const Main = () => {
   
 
   const deleteF = (i) => 
-    window.confirm("Are you sure you want to delete this task?")   &&  settasks( (t) => t.filter( (t) => t.id !== i ) ) 
+    window.confirm("Are you sure you want to delete this task?") && settasks( (t) => t.filter( (t) => t.id !== i ) ) ; 
 
   const clear = () =>
-    window.confirm("Are you sure you want to delete all completed tasks?")  &&  settasks( tasks.filter((task)=> !task.completed ));
+    window.confirm("Are you sure you want to delete all completed tasks?")  &&  settasks( tasks.filter((tasks)=> !tasks.completed ));
 
   return (
     <div className={` ${s.main} ${font.className} `}>
